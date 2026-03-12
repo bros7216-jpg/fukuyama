@@ -61,7 +61,7 @@
 </head>
 <body class="custom-scrollbar min-h-screen">
 
-    <!-- Auth Modal (ログイン画面) -->
+    <!-- 認証用モーダル -->
     <div id="auth-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95">
         <div class="login-card w-full max-w-md p-8 rounded-3xl relative overflow-hidden shadow-2xl">
             <div class="text-center mb-8">
@@ -75,11 +75,11 @@
             <div class="space-y-4">
                 <div class="relative">
                     <i data-lucide="user" class="absolute left-4 top-4 w-5 h-5 text-zinc-500"></i>
-                    <input type="text" id="modal-user-id" placeholder="アーカイブID (英数字)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-white font-bold focus:border-amber-500 outline-none">
+                    <input type="text" id="modal-user-id" placeholder="アーカイブID (自由な名前)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-white font-bold focus:border-amber-500 outline-none">
                 </div>
                 <div class="relative">
                     <i data-lucide="key-round" class="absolute left-4 top-4 w-5 h-5 text-zinc-500"></i>
-                    <input type="password" id="modal-user-pin" placeholder="PIN (4桁)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-amber-500 font-mono text-lg focus:border-amber-500 outline-none">
+                    <input type="password" id="modal-user-pin" placeholder="PIN (4桁の数字)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-amber-500 font-mono text-lg focus:border-amber-500 outline-none">
                 </div>
                 
                 <div class="flex flex-col gap-3 pt-4">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    <!-- Main App -->
+    <!-- メインアプリ -->
     <div id="main-app" class="hidden">
         <header class="sticky top-0 z-50 bg-[#0a0a0c]/90 border-b border-zinc-800 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
