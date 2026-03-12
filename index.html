@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masaharu Fukuyama - Live Archive</title>
+    <title>Masaharu Fukuyama - Live Archive Complete</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -16,10 +16,11 @@
             overflow-x: hidden;
         }
 
-        .era-dawn { --era-color: #3b82f6; --era-bg: rgba(59, 130, 246, 0.1); }
-        .era-golden { --era-color: #fbbf24; --era-bg: rgba(251, 191, 36, 0.1); }
-        .era-dome { --era-color: #ec4899; --era-bg: rgba(236, 72, 153, 0.1); }
-        .era-resonance { --era-color: #10b981; --era-bg: rgba(16, 185, 129, 0.1); }
+        .era-90s { --era-color: #60a5fa; --era-bg: rgba(96, 165, 250, 0.1); }
+        .era-00s { --era-color: #fbbf24; --era-bg: rgba(251, 191, 36, 0.1); }
+        .era-10s { --era-color: #f472b6; --era-bg: rgba(244, 114, 182, 0.1); }
+        .era-20s { --era-color: #34d399; --era-bg: rgba(52, 211, 153, 0.1); }
+        .era-kanshasi { --era-color: #f87171; --era-bg: rgba(248, 113, 113, 0.1); }
 
         .era-card-header {
             border-left: 4px solid var(--era-color);
@@ -39,8 +40,8 @@
         
         .tour-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.75rem;
         }
 
         .login-card {
@@ -51,7 +52,6 @@
 
         .gold-button {
             background: linear-gradient(to right, #d97706, #fbbf24);
-            transition: all 0.3s ease;
         }
 
         .live-btn {
@@ -61,35 +61,35 @@
 </head>
 <body class="custom-scrollbar min-h-screen">
 
-    <!-- Auth Modal -->
-    <div id="auth-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90">
+    <!-- Auth Modal (ログイン画面) -->
+    <div id="auth-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95">
         <div class="login-card w-full max-w-md p-8 rounded-3xl relative overflow-hidden shadow-2xl">
-            <div class="text-center mb-10">
+            <div class="text-center mb-8">
                 <div class="inline-flex p-4 bg-zinc-800 rounded-2xl border border-amber-500/30 mb-6">
                     <i data-lucide="library" class="w-10 h-10 text-amber-500"></i>
                 </div>
-                <h2 class="text-3xl font-black text-white italic uppercase mb-1">Live Archive</h2>
-                <p class="text-xs text-amber-500 font-bold tracking-widest uppercase">M. Fukuyama 35th Anniversary</p>
+                <h2 class="text-3xl font-black text-white italic uppercase mb-1 tracking-tighter">Live Archive</h2>
+                <p class="text-[10px] text-amber-500 font-bold tracking-[0.3em] uppercase">Masaharu Fukuyama History</p>
             </div>
             
             <div class="space-y-4">
                 <div class="relative">
                     <i data-lucide="user" class="absolute left-4 top-4 w-5 h-5 text-zinc-500"></i>
-                    <input type="text" id="modal-user-id" placeholder="ユーザー名 (英数字)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-white font-bold focus:border-amber-500 outline-none">
+                    <input type="text" id="modal-user-id" placeholder="アーカイブID (英数字)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-white font-bold focus:border-amber-500 outline-none">
                 </div>
                 <div class="relative">
                     <i data-lucide="key-round" class="absolute left-4 top-4 w-5 h-5 text-zinc-500"></i>
-                    <input type="password" id="modal-user-pin" placeholder="PIN (4桁以上)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-amber-500 font-mono text-lg focus:border-amber-500 outline-none">
+                    <input type="password" id="modal-user-pin" placeholder="PIN (4桁)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-12 pr-5 py-4 text-amber-500 font-mono text-lg focus:border-amber-500 outline-none">
                 </div>
                 
                 <div class="flex flex-col gap-3 pt-4">
-                    <button id="login-btn" class="gold-button w-full text-black font-black py-4 rounded-xl uppercase tracking-tighter text-lg shadow-lg active:scale-95 transition-transform">ログイン</button>
-                    <button id="register-btn" class="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-4 rounded-xl text-sm uppercase tracking-widest transition-colors">新規アーカイブ作成</button>
-                    <button id="guest-btn" class="w-full text-zinc-500 font-bold py-2 rounded-xl text-[10px] uppercase tracking-widest hover:text-zinc-300 transition-colors">ゲストモード (保存なし)</button>
+                    <button id="login-btn" class="gold-button w-full text-black font-black py-4 rounded-xl uppercase tracking-widest shadow-lg active:scale-95 transition-transform">ログイン</button>
+                    <button id="register-btn" class="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-4 rounded-xl text-sm uppercase tracking-widest transition-colors">新規作成</button>
+                    <button id="guest-btn" class="w-full text-zinc-500 font-bold py-2 text-[10px] uppercase hover:text-zinc-300 transition-colors">ゲストモード (保存なし)</button>
                 </div>
                 <p id="auth-error" class="text-red-500 text-xs font-bold text-center mt-2 h-4 hidden"></p>
                 <div id="auth-loading" class="text-amber-500 text-xs font-bold text-center mt-2 flex items-center justify-center gap-2">
-                    <span class="animate-spin h-3 w-3 border-2 border-amber-500 border-t-transparent rounded-full"></span> <span id="auth-loading-text">サーバー接続中...</span>
+                    <span class="animate-spin h-3 w-3 border-2 border-amber-500 border-t-transparent rounded-full"></span> サーバー接続中...
                 </div>
             </div>
         </div>
@@ -104,55 +104,42 @@
                         <i data-lucide="disc" class="w-6 h-6 text-black"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-black text-white italic tracking-tight">MASAHARU FUKUYAMA</h1>
+                        <h1 class="text-xl font-black text-white italic tracking-tight uppercase">Masaharu Fukuyama</h1>
                         <div class="flex items-center gap-2">
-                            <span class="text-[10px] text-amber-500 font-bold uppercase tracking-widest">Archive ID:</span>
+                            <span class="text-[9px] text-amber-500 font-bold uppercase tracking-widest">ID:</span>
                             <span id="display-user-id" class="text-xs text-white font-mono font-bold">---</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex gap-2 bg-zinc-900/50 p-2 rounded-xl border border-zinc-800">
-                    <div class="text-center min-w-[80px] py-1">
-                        <p class="text-[9px] text-zinc-500 font-black uppercase">全公演</p>
-                        <p id="total-count" class="text-xl font-black text-amber-500">0</p>
+                    <div class="text-center min-w-[70px]">
+                        <p class="text-[8px] text-zinc-500 font-black">ALL</p>
+                        <p id="total-count" class="text-lg font-black text-amber-500">0</p>
                     </div>
-                    <div class="text-center min-w-[80px] py-1 border-l border-zinc-800">
-                        <p class="text-[9px] text-zinc-500 font-black uppercase">参戦済</p>
-                        <p id="attended-count" class="text-xl font-black text-white">0</p>
+                    <div class="text-center min-w-[70px] border-l border-zinc-800">
+                        <p class="text-[8px] text-zinc-500 font-black">LIVE</p>
+                        <p id="attended-count" class="text-lg font-black text-white">0</p>
                     </div>
-                    <div class="text-center min-w-[80px] py-1 border-l border-zinc-800">
-                        <p class="text-[9px] text-zinc-500 font-black uppercase">参戦率</p>
-                        <p id="attendance-rate" class="text-xl font-black text-white">0%</p>
+                    <div class="text-center min-w-[70px] border-l border-zinc-800">
+                        <p class="text-[8px] text-zinc-500 font-black">RATE</p>
+                        <p id="attendance-rate" class="text-lg font-black text-white">0%</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-black/40 px-6 py-2 flex items-center justify-between text-[10px] font-bold">
-                <div class="flex items-center gap-2">
-                    <div id="sync-status-icon" class="w-2 h-2 rounded-full bg-zinc-600"></div>
-                    <span id="sync-status-text" class="text-zinc-500 uppercase tracking-widest">Offline</span>
-                </div>
-                <button onclick="logout()" class="text-zinc-500 hover:text-red-400 transition-colors flex items-center gap-1 uppercase tracking-widest">
-                    <i data-lucide="log-out" class="w-3 h-3"></i> Logout
-                </button>
-            </div>
-            <div class="w-full h-1.5 bg-zinc-900">
+            <div class="w-full h-1 bg-zinc-900">
                 <div id="progress-bar" class="h-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)] transition-all duration-700" style="width: 0%"></div>
             </div>
         </header>
 
         <main class="max-w-7xl mx-auto px-4 py-12">
-            <div id="live-list" class="space-y-24"></div>
+            <div id="live-list" class="space-y-20"></div>
         </main>
 
         <footer class="py-20 border-t border-zinc-900 text-center text-zinc-600">
-            <div class="mb-4 flex justify-center gap-6">
-                <i data-lucide="instagram" class="w-5 h-5"></i>
-                <i data-lucide="twitter" class="w-5 h-5"></i>
-                <i data-lucide="youtube" class="w-5 h-5"></i>
-            </div>
-            <p class="text-[10px] tracking-[0.3em] font-bold uppercase italic">© Masaharu Fukuyama Official Archive System</p>
+            <button onclick="logout()" class="mb-8 text-xs text-zinc-500 hover:text-white transition-colors border border-zinc-800 px-6 py-2 rounded-full uppercase tracking-widest">Logout</button>
+            <p class="text-[10px] tracking-[0.4em] font-bold uppercase italic">© MASAHARU FUKUYAMA ARCHIVE PROJECT</p>
         </footer>
     </div>
 
@@ -161,50 +148,72 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- Firebase Configuration ---
         const firebaseConfig = {
             apiKey: "AIzaSyAtJmQ9w46JR31H9LBUHnNccLBZHSQXH1Q",
             authDomain: "fukuyama-80cf4.firebaseapp.com",
             projectId: "fukuyama-80cf4",
             storageBucket: "fukuyama-80cf4.firebasestorage.app",
             messagingSenderId: "348267257207",
-            appId: "1:348267257207:web:8e095b8ca3bd40fe789572",
-            measurementId: "G-QQL8QMRJN0"
+            appId: "1:348267257207:web:8e095b8ca3bd40fe789572"
         };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const appId = "fukuyama-live-v5";
+        const appId = "fukuyama-live-complete-v1";
 
-        const build = (prefix, year, venues) => venues.map((v, i) => ({ id: `${prefix}-${year}-${i}`, d: year, v }));
         const ARENA = ["横浜アリーナ", "大阪城ホール", "日本ガイシホール", "マリンメッセ福岡", "真駒内セキスイハイム", "セキスイハイム宮城", "広島グリーンアリーナ", "さいたまスーパーアリーナ", "日本武道館", "サンドーム福井", "朱鷺メッセ", "エコパアリーナ", "愛媛県武道館", "鹿児島アリーナ"];
-        const DOMES = ["東京ドーム", "京セラドーム大阪", "ナゴヤドーム", "福岡PayPayドーム", "札幌ドーム"];
+        const DOMES = ["東京ドーム", "京セラドーム大阪", "バンテリンドームナゴヤ", "福岡PayPayドーム", "札幌ドーム"];
 
         const LIVE_DATA = [
-            { era: "1990 - 1999", class: "era-dawn", icon: "zap", label: "DAWN / THE BEGINNING", tours: [
-                { title: "Early Gigs & Hall Tours", items: build('ear', '90-92', ["渋谷eggman", "新宿ロフト", "名古屋ハートランド", "大阪バナナホール", "渋谷公会堂", "中野サンプラザ"]) },
-                { title: "WE'RE BROS. TOUR '93", items: build('wb93', '1993', ["渋谷公会堂", "大阪厚生年金", "福岡市民会館", "名古屋市民"]) },
-                { title: "TOUR '94 'ON AND ON'", items: build('on94', '1994', ARENA.slice(0, 6)) },
-                { title: "TOUR '98 'LIKE A HURRICANE'", items: build('lh98', '1998', ARENA) }
+            { era: "1990 - 1999", class: "era-90s", icon: "zap", label: "Early Years & Breakthrough", tours: [
+                { title: "1st LIVE WE'RE BROS.", items: [{id: "1st-90", d: "1990", v: "渋谷eggman (初ライブ)"}] },
+                { title: "WERE BROS. TOUR '91 'Looking For The Magic'", items: [{id: "lfm-91", d: "1991", v: "中野サンプラザ / 渋谷公会堂 他"}] },
+                { title: "WERE BROS. TOUR '92 'M-Collection'", items: [{id: "mc-92", d: "1992", v: "全国13会場 (渋公2DAYS)"}] },
+                { title: "WERE BROS. TOUR '93 '約束の丘'", items: [{id: "yak-93", d: "1993", v: "日本武道館 (初)"}, {id: "yak-93-2", d: "1993", v: "大阪厚生年金会館 他"}] },
+                { title: "TOUR '94 'ON AND ON'", items: [{id: "on-94", d: "1994", v: "横浜アリーナ (初)"}, {id: "on-94-2", d: "1994", v: "国立代々木競技場 第一体育館"}] },
+                { title: "TOUR '95 'M-COLLECTION 風をさがしてる'", items: [{id: "mc-95", d: "1995", v: "全国アリーナツアー"}] },
+                { title: "TOUR '98 'LIKE A HURRICANE'", items: [{id: "lh-98", d: "1998", v: "全国アリーナツアー (活動再開後)"}] }
             ]},
-            { era: "2000 - 2009", class: "era-golden", icon: "star", label: "GOLDEN ERA / MAGNUM", tours: [
-                { title: "10th Anniv. MAGNUM LIVE", items: build('mag', '2000', ["稲佐山公園", "横浜アリーナ"]) },
-                { title: "玉卵 TOUR '01 'f'", items: build('f01', '2001', ARENA) },
-                { title: "17年モノ TOUR 2007", items: build('17m', '2007', ARENA) },
-                { title: "道標 TOUR 2009 / 稲佐山", items: build('mi09', '2009', [...ARENA.slice(0, 8), "長崎 稲佐山公園"]) }
+            { era: "2000 - 2009", class: "era-00s", icon: "star", label: "Golden Era & 10th-20th Anniv", tours: [
+                { title: "10th Anniv. MAGNUM COLLECTION 2000", items: [{id: "mag-00", d: "2000", v: "横浜アリーナ"}, {id: "mag-00-2", d: "2000", v: "マリンメッセ福岡 他"}] },
+                { title: "玉卵 TOUR 2001 'f'", items: [{id: "tam-01", d: "2001", v: "全国アリーナツアー"}] },
+                { title: "15th Anniv. WE'RE BROS. FIRE!!", items: [{id: "fire-05", d: "2005", v: "全国アリーナツアー"}] },
+                { title: "17年モノ TOUR 2007", items: [{id: "17m-07", d: "2007", v: "さいたまスーパーアリーナ"}, {id: "17m-07-2", d: "2007", v: "大阪城ホール 他"}] },
+                { title: "道標 TOUR 2009", items: [{id: "mic-09", d: "2009", v: "全国アリーナ / 日本武道館 10DAYS"}] },
+                { title: "稲佐山 創業祭 (2000/2009)", items: [{id: "ina-00", d: "2000", v: "稲佐山公園 (初)"}, {id: "ina-09", d: "2009", v: "稲佐山公園 (20周年)"}] }
             ]},
-            { era: "2010 - 2019", class: "era-dome", icon: "map-pin", label: "DOME & ASIA EXPANSION", tours: [
-                { title: "THE LIVE BANG!! (2011)", items: build('lb11', '2011', ARENA) },
-                { title: "DOME TOUR 2014 'HUMAN'", items: build('hu14', '2014', [...DOMES, "台北アリーナ", "香港エキスポ"]) },
-                { title: "夏だ! 稲佐山だ! 2015", items: build('ina15', '2015', ["長崎 稲佐山公園 (2DAYS)"]) },
-                { title: "WE'RE BROS. TOUR 2018", items: build('wb18', '2018', ARENA) }
+            { era: "2010 - 2019", class: "era-10s", icon: "map-pin", label: "Global & Domes", tours: [
+                { title: "THE LIVE BANG!! (2011)", items: [{id: "lb-11", d: "2011", v: "全国アリーナツアー"}] },
+                { title: "DOME TOUR 2014 'HUMAN'", items: DOMES.map(v => ({id: `hu14-${v}`, d: "2014", v})) },
+                { title: "ASIA TOUR 2014", items: [{id: "as-14", d: "2014", v: "台北アリーナ"}, {id: "as-14-2", d: "2014", v: "香港 AWE"}] },
+                { title: "福山☆夏の大創業祭 2015", items: [{id: "ds-15", d: "2015", v: "日産スタジアム"}, {id: "ds-15-2", d: "2015", v: "ヤンマースタジアム長居"}, {id: "ds-15-3", d: "2015", v: "稲佐山公園"}] },
+                { title: "WE'RE BROS. TOUR 2018", items: [{id: "wb-18", d: "2018", v: "全国アリーナツアー"}] },
+                { title: "30th プレ企画 キックオフ 2019", items: [{id: "ko-19", d: "2019", v: "マリンメッセ福岡 (BROS.限定)"}] }
             ]},
-            { era: "2020 - 2026", class: "era-resonance", icon: "radio", label: "RESONANCE / 35TH ANNIV.", tours: [
-                { title: "言霊の幸わう夏 2023", items: build('ko23', '2023', ["日本武道館 (3DAYS)"]) },
-                { title: "35th Anniv. Resonance Tour 2024", items: build('r24', '2024', ARENA) },
-                { title: "35th Anniv. Resonance Tour 2025", items: build('r25', '2025', DOMES) },
-                { title: "冬の大感謝祭 (其の三〜其の二十二)", items: Array.from({length: 20}, (_, i) => ({ id: `th-${i+3}`, d: `${2001+i}`, v: `其の${i+3}: パシフィコ横浜 / Kアリーナ` })) }
+            { era: "2020 - 2026", class: "era-20s", icon: "radio", label: "Resonance & 35th Anniv", tours: [
+                { title: "AKIRA LIVE TOUR 2021-2022", items: [{id: "ak-21", d: "2021", v: "ぴあアリーナMM 他"}] },
+                { title: "言霊の幸わう夏 2023", items: [{id: "ko-23", d: "2023", v: "日本武道館 (3DAYS)"}] },
+                { title: "35th Anniv. Resonance Tour 2024", items: ARENA.map(v => ({id: `r24-${v}`, d: "2024", v})) },
+                { title: "35th Anniv. Resonance Tour 2025", items: DOMES.map(v => ({id: `r25-${v}`, d: "2025", v})) },
+                { title: "長崎スタジアムシティ 2024", items: [{id: "nsc-24", d: "2024", v: "PEACE STADIUM (フリーライブ)"}] }
+            ]},
+            { era: "冬の大感謝祭", class: "era-kanshasi", icon: "gift", label: "Year-End Special Series", tours: [
+                { title: "其の一 〜 其の十 (1998-2010)", items: [
+                    {id: "th-1", d: "1998", v: "其の一: 赤坂BLITZ"}, {id: "th-2", d: "1999", v: "其の二: パシフィコ横浜"},
+                    {id: "th-3", d: "2001", v: "其の三: パシフィコ横浜"}, {id: "th-4", d: "2002", v: "其の四: ぴあアリーナ(横浜)"},
+                    {id: "th-5", d: "2003", v: "其の五: パシフィコ横浜"}, {id: "th-6", d: "2004", v: "其の六: パシフィコ横浜"},
+                    {id: "th-7", d: "2005", v: "其の七: パシフィコ横浜"}, {id: "th-8", d: "2007", v: "其の八: パシフィコ横浜"},
+                    {id: "th-9", d: "2008", v: "其の九: パシフィコ横浜"}, {id: "th-10", d: "2010", v: "其の十: パシフィコ横浜"}
+                ]},
+                { title: "其の十一 〜 其の二十二 (2011-2024)", items: [
+                    {id: "th-11", d: "2011", v: "其の十一: パシフィコ"}, {id: "th-12", d: "2012", v: "其の十二: パシフィコ"},
+                    {id: "th-13", d: "2013", v: "其の十三: パシフィコ"}, {id: "th-14", d: "2014", v: "其の十四: パシフィコ"},
+                    {id: "th-15", d: "2015", v: "其の十五: パシフィコ"}, {id: "th-16", d: "2016", v: "其の十六: パシフィコ"},
+                    {id: "th-17", d: "2017", v: "其の十七: パシフィコ"}, {id: "th-18", d: "2018", v: "其の十八: パシフィコ"},
+                    {id: "th-19", d: "2019", v: "其の十九: パシフィコ"}, {id: "th-20", d: "2021", v: "其の二十: さいたまSA"},
+                    {id: "th-21", d: "2023", v: "其の二十一: Kアリーナ"}, {id: "th-22", d: "2024", v: "其の二十二: Kアリーナ"}
+                ]}
             ]}
         ];
 
@@ -219,75 +228,56 @@
         const getUserDocRef = (id) => doc(db, 'artifacts', appId, 'public', 'data', 'users', id.toLowerCase().replace(/[^a-z0-9]/g, '_'));
 
         async function handleAuth(mode) {
-            if (!isFirebaseReady && mode !== 'guest') return showError("サーバー接続待ちです...");
-            
+            if (!isFirebaseReady && mode !== 'guest') return;
             const id = document.getElementById('modal-user-id').value.trim();
             const pin = document.getElementById('modal-user-pin').value.trim();
-            
             if (mode === 'guest') { loginSuccess("GUEST", "", []); return; }
-            if (!id || pin.length < 4) return showError("IDと4桁以上のPINを入力してください");
-            
+            if (!id || pin.length < 4) return showError("IDと4桁以上のPINが必要です");
             const docRef = getUserDocRef(id);
             try {
                 const snap = await getDoc(docRef);
                 if (mode === 'register') {
-                    if (snap.exists()) return showError("そのIDは既に使用されています");
-                    await setDoc(docRef, { pin, attended: [], createdAt: Date.now() });
+                    if (snap.exists()) return showError("そのIDは使われています");
+                    await setDoc(docRef, { pin, attended: [] });
                     loginSuccess(id, pin, []);
                 } else {
-                    if (!snap.exists() || snap.data().pin !== pin) return showError("IDまたはPINが正しくありません");
+                    if (!snap.exists() || snap.data().pin !== pin) return showError("不一致です");
                     loginSuccess(id, pin, snap.data().attended || []);
                 }
-            } catch (e) { showError("認証エラー: " + e.message); }
+            } catch (e) { showError("Error: " + e.message); }
         }
 
         function loginSuccess(id, pin, data) {
             userSyncId = id.toLowerCase(); userPin = pin; attendedShows = new Set(data);
             if (id !== "GUEST") {
-                localStorage.setItem('f_id_v5', id); 
-                localStorage.setItem('f_pin_v5', pin);
+                localStorage.setItem('f_id_final', id); localStorage.setItem('f_pin_final', pin);
                 initSync();
-            } else {
-                updateSyncStatus('offline', 'Guest Mode');
             }
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('main-app').classList.remove('hidden');
             document.getElementById('display-user-id').innerText = id;
-            render(); 
-            updateStats();
+            render(); updateStats();
         }
 
         window.logout = () => { localStorage.clear(); location.reload(); };
 
         function initSync() {
-            if (userSyncId === "guest") return;
             onSnapshot(getUserDocRef(userSyncId), (snap) => {
                 if (snap.exists() && snap.data().pin === userPin) {
                     attendedShows = new Set(snap.data().attended || []);
-                    render(); updateStats(); updateSyncStatus('active', 'Online');
+                    render(); updateStats();
                 }
-            }, (err) => updateSyncStatus('error', 'Sync Offline'));
+            });
         }
 
         async function saveToCloud() {
-            if (userSyncId === "guest") { updateSyncStatus('offline', 'Local Only'); return; }
-            updateSyncStatus('syncing', 'Updating Cloud...');
-            try {
-                await setDoc(getUserDocRef(userSyncId), { pin: userPin, attended: Array.from(attendedShows), updatedAt: Date.now() }, { merge: true });
-                updateSyncStatus('active', 'Cloud Synced');
-            } catch (e) { updateSyncStatus('error', 'Save Error'); }
+            if (userSyncId === "guest") return;
+            try { await setDoc(getUserDocRef(userSyncId), { pin: userPin, attended: Array.from(attendedShows) }, { merge: true }); } catch (e) {}
         }
 
         function toggleShow(id) {
             attendedShows.has(id) ? attendedShows.delete(id) : attendedShows.add(id);
             saveToCloud(); render(); updateStats();
-        }
-
-        function updateSyncStatus(s, m) {
-            const ic = document.getElementById('sync-status-icon');
-            const txt = document.getElementById('sync-status-text');
-            if (txt) txt.innerText = m;
-            if (ic) ic.className = `w-2 h-2 rounded-full ${s === 'active' ? 'bg-green-500' : s === 'syncing' ? 'bg-amber-500 animate-pulse' : s === 'offline' ? 'bg-zinc-600' : 'bg-red-500'}`;
         }
 
         function updateStats() {
@@ -302,38 +292,34 @@
 
         function render() {
             const container = document.getElementById('live-list');
-            if (!container) return;
             container.innerHTML = '';
             LIVE_DATA.forEach(era => {
                 const sec = document.createElement('div');
                 sec.className = era.class;
                 sec.innerHTML = `
-                    <div class="era-card-header p-4 rounded-r-xl mb-10 flex items-center justify-between">
+                    <div class="era-card-header p-4 rounded-r-xl mb-10">
                         <div class="flex items-center gap-4">
-                            <div class="p-2 bg-black/40 rounded-lg"><i data-lucide="${era.icon}" class="w-6 h-6 text-[var(--era-color)]"></i></div>
+                            <i data-lucide="${era.icon}" class="w-6 h-6 text-[var(--era-color)]"></i>
                             <div>
-                                <h2 class="text-2xl font-black text-white italic tracking-tighter">${era.era}</h2>
-                                <p class="text-[10px] font-bold text-[var(--era-color)] tracking-[0.3em] uppercase">${era.label}</p>
+                                <h2 class="text-xl font-black text-white italic tracking-tighter">${era.era}</h2>
+                                <p class="text-[9px] font-bold text-[var(--era-color)] uppercase tracking-widest">${era.label}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="space-y-16 pl-2 md:pl-6">${era.tours.map(tour => `
+                    <div class="space-y-12 pl-2 md:pl-6">${era.tours.map(tour => `
                         <div>
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="h-2 w-2 rounded-full bg-[var(--era-color)]"></span>
-                                <h3 class="text-sm md:text-base font-bold text-white uppercase tracking-wider">${tour.title}</h3>
-                            </div>
+                            <h3 class="text-xs font-bold text-zinc-500 mb-4 border-l-2 border-zinc-800 pl-3 uppercase tracking-wider">${tour.title}</h3>
                             <div class="tour-grid">${tour.items.map(item => {
                                 const attended = attendedShows.has(item.id);
                                 return `
-                                <button data-id="${item.id}" class="live-btn group flex flex-col p-5 rounded-2xl border text-left ${attended ? 'attended-card' : 'bg-zinc-900/30 border-zinc-800 hover:border-[var(--era-color)]/50'}">
-                                    <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-tighter">${item.d}</span>
-                                        <div class="w-5 h-5 rounded-full border-2 border-zinc-700 flex items-center justify-center ${attended ? 'bg-[var(--era-color)] border-[var(--era-color)]' : ''}">
-                                            ${attended ? '<i data-lucide="check" class="w-3 h-3 text-black stroke-[4]"></i>' : ''}
+                                <button data-id="${item.id}" class="live-btn flex flex-col p-4 rounded-xl border text-left ${attended ? 'attended-card' : 'bg-zinc-900/30 border-zinc-800'}">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-[9px] font-bold text-zinc-500">${item.d}</span>
+                                        <div class="w-4 h-4 rounded-full border border-zinc-700 flex items-center justify-center ${attended ? 'bg-[var(--era-color)] border-[var(--era-color)]' : ''}">
+                                            ${attended ? '<i data-lucide="check" class="w-3 h-3 text-black"></i>' : ''}
                                         </div>
                                     </div>
-                                    <p class="text-sm md:text-base font-bold leading-tight ${attended ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-200'}">${item.v}</p>
+                                    <p class="text-[11px] font-bold leading-tight ${attended ? 'text-white' : 'text-zinc-400'}">${item.v}</p>
                                 </button>`;
                             }).join('')}
                             </div>
@@ -347,21 +333,14 @@
 
         window.onload = () => {
             lucide.createIcons();
-            onAuthStateChanged(auth, async (user) => {
+            onAuthStateChanged(auth, (user) => {
                 if (user) {
                     isFirebaseReady = true;
                     document.getElementById('auth-loading').classList.add('hidden');
-                    const sid = localStorage.getItem('f_id_v5'), spn = localStorage.getItem('f_pin_v5');
-                    if (sid && spn) { 
-                        document.getElementById('modal-user-id').value = sid;
-                        document.getElementById('modal-user-pin').value = spn;
-                        handleAuth('login');
-                    }
+                    const sid = localStorage.getItem('f_id_final'), spn = localStorage.getItem('f_pin_final');
+                    if (sid && spn) handleAuth('login');
                 } else {
-                    signInAnonymously(auth).catch(e => {
-                        console.error("Auth Failed", e);
-                        document.getElementById('auth-loading-text').innerText = "オフラインモード";
-                    });
+                    signInAnonymously(auth);
                 }
             });
         };
